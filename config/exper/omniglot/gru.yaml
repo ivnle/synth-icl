@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/omniglot.yaml
+  - /model/gru.yaml
+  - /exper/omniglot/base.yaml

@@ -1,0 +1,21 @@
+# @package _global_
+data:
+  _name_: assoc-recall
+  # num_examples: 5000
+  # num_test_examples: 500
+  vocab_size: 10
+  num_xy_pairs_train: 32
+  num_xy_pairs_val: 32
+  force_target_in_prompt: false
+  # copy_method: assoc_recall
+  # number_duplicates_per_epoch: 0
+  # seed: 0
+  # batch_size: 32
+  # split_train_test: false # splits vocab in half
+  # induction_len: 1
+  # induction_num_triggers: 1
+  # allow_dot: false
+  # max_copy_len: 10
+  # test_seq_len: null
+  # num_keys: 1
+  # data_dir: null

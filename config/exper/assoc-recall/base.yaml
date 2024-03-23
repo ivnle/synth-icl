@@ -1,0 +1,14 @@
+# @package _global_
+wandb:
+  project: assoc-recall
+model:
+  d_model: 256
+  n_layer: 6
+  n_heads: 8
+train:
+  batch_size: 64
+eval:
+  batch_size: 1
+  iters: 500
+  split: both
+  every: 600

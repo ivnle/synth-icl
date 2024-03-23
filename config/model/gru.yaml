@@ -1,0 +1,10 @@
+# @package _global_
+model:
+  _name_: gru
+  d_model: 128
+  n_layer: 10
+  bias: false
+  batch_first: true
+  dropout: 0.0
+  bidirectional: false
+  max_seq_len: null

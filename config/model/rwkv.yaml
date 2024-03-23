@@ -1,0 +1,6 @@
+# @package _global_
+model:
+  _name_: rwkv
+  max_seq_len: 1024
+  d_model: 4096
+  n_layer: 5

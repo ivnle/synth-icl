@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/linear-regression.yaml
+  - /model/retnet.yaml
+  - /exper/linear-regression/base.yaml

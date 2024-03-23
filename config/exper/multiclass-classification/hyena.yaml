@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/multiclass-classification.yaml
+  - /model/hyena.yaml
+  - /exper/multiclass-classification/base.yaml

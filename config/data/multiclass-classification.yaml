@@ -1,0 +1,8 @@
+# @package _global_
+data:
+  _name_: multiclass-classification
+  x_distr: uniform # uniform or normal
+  y_distr: normal # uniform or normal
+  num_classes: 3 # possible y values
+  num_xy_pairs: 32 # xy pairs including query
+  dim: 16 # dimension of x and y

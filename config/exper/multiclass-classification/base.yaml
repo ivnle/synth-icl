@@ -1,0 +1,21 @@
+# @package _global_
+wandb:
+  project: multiclass-classification
+model:
+  d_model: 256
+  num_layer: 24
+  n_layer: 6
+  max_seq_len: 512
+eval:
+  iters: 1000
+  every: 1000
+train:
+  iters: 50001 # 50001 is safe, 40001 is also ok, 30001 is a little risky
+  dtype: float32
+  do_amp: false
+  batch_size: 32
+  log_every: 200
+optimizer:
+  lr: 1.0e-4
+scheduler:
+  decay_lr: true

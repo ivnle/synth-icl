@@ -1,0 +1,83 @@
+defaults:
+  - _self_
+  - optimizer: adamw
+  - model: base
+  - exper: base
+  - data: base
+seed: 1000
+seed_eval: 2000
+seed_test: 3000
+device: cuda
+train:
+  do: true
+  do_save: false
+  # set to null to always generate new data
+  # set to N to reset dataloader every N iters
+  # useful for overfitting on training set
+  reset_every: null
+  dtype: float32 # float32|bfloat16|float16
+  compile: false # TODO figure out why this breaks when true
+  do_amp: false
+  batch_size: 128
+  grad_clip: 1.0 # clip gradients at this value, or disable if == 0.0
+  iters: 10001 # total number of training iterations
+  samples: null # if set, overrides iters, number of samples to train on
+  log_every: 200
+  save_every: 100000
+  # save_path: /graft1/checkpoints/ivanlee/icl-arch/
+  # save_path: /trunk/ivanlee/icl-arch/
+  save_path: ./out
+  num_workers: 0
+  do_early_stop: false
+  early_stop_patience: 5
+  early_stop_metric: loss # `loss` or `acc`
+  early_stop_tol: 0.001
+  # early stop begins after this many iterations
+  early_stop_start_iter: ${scheduler.warmup_iters}
+  # stops training if acc is above this value, independent of early_stop
+  # set to `null` to disable
+  early_stop_acc: null
+  parallel_loss: false # take loss at every token if true else take loss of last token only 
+  
+  merge_embeds: false
+  merge_type: sum
+
+eval:
+  do: true
+  split: both # [train, eval, both]
+  batch_size: 1
+  every: 1000 # how often to evaluate, in iters
+  every_samples: null # if set, overrides `every` and evaluates every N samples
+  iters: 1000 # number of batches to evaluate on
+scheduler:
+  decay_lr: True # whether to decay the learning rate
+  warmup_iters: ${eval:'${train.iters} * 0.2'}
+  # decay should be ~= max_iters per Chinchilla
+  lr_decay_iters: ${train.iters}
+  # minimum learning rate, should be ~= learning_rate/10 per Chinchilla
+  min_lr: ${eval:'${optimizer.lr} / 10'}
+optimizer:
+  lr: 1.0e-4
+log_level: info
+
+# Number of examples to log to wandb
+examples_to_log: 3
+# Which batch indices to log. See `add_example_to_table` in main.py
+log_batch_idx: [0, 1]
+
+wandb:
+  project: icl-arch
+
+save_checkpoints: false
+
+nl_icl:
+  do: false
+  checkpoint_path: null
+  hf_path: null
+  task: sentiment
+  n_seeds: 10
+  min_examples_per_class: 0
+  max_examples_per_class: 9
+  do_full_vocab: true
+
+do_count_param_only: false

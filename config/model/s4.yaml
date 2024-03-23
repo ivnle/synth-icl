@@ -1,0 +1,45 @@
+# @package _global_
+model:
+  layer:
+    _name_: s4d
+    d_state: 64 # TODO figure out how to set this
+    lr: 0.0005
+    transposed: false
+    return_state: false
+  _name_: safari
+  d_model: 128
+  n_layer: 7
+  d_inner: ${eval:4 * ${.d_model}}
+  vocab_size: 32000
+  resid_dropout: 0.0
+  embed_dropout: 0.1
+  # old
+  # does max_seq_len mean anything in s4? think we only use
+  # this to set the length of each example
+  max_seq_len: 256
+train:
+  seed: 0
+  interval: step
+  monitor: val/accuracy_ignore_index
+  mode: max
+  ema: 0.0
+  test: false
+  debug: false
+  ignore_warnings: false
+  state:
+    mode: null
+    n_context: 0
+    n_context_eval: 0
+  ckpt: null
+  disable_dataset: false
+  validate_at_start: false
+  pretrained_model_path: null
+  pretrained_model_strict_load: true
+  pretrained_model_state_hook:
+    _name_: null
+  post_init_hook:
+    _name_: null
+  layer_decay:
+    _name_: null
+    decay: 0.7
+  global_batch_size: 32

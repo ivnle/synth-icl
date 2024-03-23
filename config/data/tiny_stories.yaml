@@ -1,0 +1,11 @@
+# @package _global_
+data:
+  _name_: language-modeling
+  vocab_size: 32000
+  dir: /graft1/datasets/shared
+gen:
+  gen_every: 100
+  temperature: 1.0
+  top_k: null
+  max_new_tokens: 50
+  prompt_len: 50

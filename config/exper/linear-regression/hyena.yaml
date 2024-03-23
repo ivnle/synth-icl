@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/linear-regression.yaml
+  - /model/hyena.yaml
+  - /exper/linear-regression/base.yaml

@@ -1,0 +1,24 @@
+# @package _global_
+model:
+  _name_: x-encoder-decoder
+  d_model: 128
+  n_layer: 4
+  n_heads: 4
+  max_seq_len: 256
+  ff_SwiGLU: false
+  pass_embed: false
+
+  twrap_kwargs:
+    max_seq_len: ${model.max_seq_len}
+  attn_kwargs:
+    dim: ${model.d_model}
+    depth: ${eval:'${model.n_layer} // 2'}
+    heads: ${model.n_heads}
+    rotary_pos_emb: false
+    ff_swish: ${model.ff_SwiGLU}
+    ff_glu: ${model.ff_SwiGLU}
+    rel_pos_bias: false
+    attn_flash: true
+
+  decoder_specific_kwargs:
+    cross_attend: true

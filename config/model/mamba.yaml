@@ -1,0 +1,10 @@
+# @package _global_
+model:
+  _name_: mamba
+  d_model: 128
+  n_layer: 6
+  norm_epsilon: 0.00001
+  rms_norm: false
+  fused_add_norm: false
+  residual_in_fp32: false
+  max_seq_len: 256

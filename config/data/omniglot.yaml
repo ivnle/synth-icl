@@ -1,0 +1,47 @@
+# @package _global_
+embedder:
+  # num_classes: null  # is set later, depending on data config
+  example_encoding: resnet # 'resnet'/'linear'/'embedding'
+  flatten_superpixels: false # to flatten resnet outputs
+  example_dropout_prob: 0.0
+  concatenate_labels: false
+  use_positional_encodings: false # disable since llama uses RoPE
+  positional_dropout_prob: 0.0
+data:
+  _name_: omniglot
+  num_classes: null # set in build_dataset
+  train_seqs: bursty
+  eval_seqs: fewshot_holdout
+  example_type: omniglot # 'omniglot' or 'symbolic'
+
+  generator_config:
+    n_rare_classes: 1603 # 1623 - 20
+    n_common_classes: 10
+    n_holdout_classes: 10
+    zipf_exponent: 0.0
+    use_zipf_for_common_rare: false
+    noise_scale: 0.0
+    preserve_ordering_every_n: null
+
+  omniglot_config:
+    omniglot_split: all # 1623 total classes
+    exemplars: all # 'single' / 'separated' / 'all'
+    augment_images: false # multiply total classes x 8
+
+  symbolic_config:
+    dataset_size: 1000
+
+  seq_config:
+    seq_len: 9 # NB: can get overridden for some seq types
+    fs_shots: 4
+    bursty_shots: 3
+    ways: 2
+    p_bursty: 0.9
+    p_bursty_common: 0.0
+    p_bursty_zipfian: 1.0
+    p_fewshot: 0.1
+    non_bursty_type: zipfian
+    labeling_common: ordered
+    labeling_rare: ordered
+    randomly_generate_rare: false
+    grouped: false

@@ -1,0 +1,79 @@
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args_no_hyphens}
+entity: iceberg
+method: grid
+parameters:
+  data:
+    value: gauss-mix-model
+  data.dim:
+    values:
+      - 16
+  data.num_classes:
+    values:
+      - 2
+      - 4
+      - 8
+  data.num_xy_pairs_train:
+    value: 32
+  data.num_xy_pairs_val:
+    value: 32
+  eval.every:
+    value: 5000
+  eval.iters:
+    value: 1000
+  model:
+    values:
+      # - x-decoder
+      # - x-encoder
+      - mamba
+  model.twrap_kwargs.use_abs_pos_emb:
+    values:
+      - true
+      - false
+  model.d_model:
+    values:
+      - 64
+  model.max_seq_len:
+    value: 512
+  model.n_layer:
+    values:
+      # - 12
+      - 8
+      - 4
+  optimizer:
+    value: adamw
+  optimizer.lr:
+    values:
+      - 0.001
+      # - 0.000316228
+      - 0.0001
+  optimizer.weight_decay:
+    value: 0
+  scheduler.decay_lr:
+    value: true
+  seed:
+    values:
+      - 2059
+      - 5947
+      # - 9656
+  train.batch_size:
+    value: 128
+  train.do_early_stop:
+    value: false
+  train.iters:
+    value: 50001
+  train.log_every:
+    value: 1000
+  train.parallel_loss:
+    value: false
+  train.merge_embeds:
+    value: True
+  train.merge_type:
+    values:
+      - sum
+      - concat
+program: main.py
+project: gmm-pi

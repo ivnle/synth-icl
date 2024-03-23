@@ -1,0 +1,9 @@
+# @package _global_
+model:
+  _name_: llama2
+  d_model: 288
+  d_inner: ${eval:'${model.d_model} * 4'}
+  n_layer: 4
+  n_heads: ${eval:'${model.d_model} / 32'}
+  n_kv_heads: ${model.n_heads}
+  max_seq_len: 256

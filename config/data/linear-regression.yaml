@@ -1,0 +1,25 @@
+# @package _global_
+data:
+  _name_: linear-regression
+  curriculum:
+    dims:
+      start: ${data.curriculum.dims.end}
+      end: 5
+      inc: 1
+      interval: 2000
+    points_train:
+      start: ${eval:'${data.curriculum.dims.start} + 1'}
+      end: ${eval:'${data.curriculum.dims.end} * 2 + 1'}
+      inc: 2
+      interval: 2000
+    points_val:
+      start: ${eval:'${data.curriculum.dims.end} * 2 + 1'}
+      end: ${eval:'${data.curriculum.dims.end} * 2 + 1'}
+      inc: 2
+      interval: 2000      
+  task: linear_regression
+  data: gaussian
+  task_kwargs: {}
+  n_dims: ${data.curriculum.dims.end}
+  train_noise: 0 # std of gaussian noise to add to training y's during training
+  val_noise: 0 # std of gaussian noise to add to y's during evaluation

@@ -1,0 +1,83 @@
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args_no_hyphens}
+entity: iceberg
+method: grid
+parameters:
+  data:
+    value: lang-model
+  data.preprocessing_num_workers:
+    value: 20
+  data.version:
+    values:
+      - original
+  eval.every:
+    value: 5000
+  eval.iters:
+    value: 1000
+  model:
+    values:
+      - rnn
+      # - lstm
+      # - gru
+      # - lightconv
+      # - dynamicconv
+      # - s4
+      # - h3
+      # - hyena
+      # - mamba
+      # - llama2
+      # - retnet
+      # - rwkv
+      # - gpt2
+  model.d_model:
+    values:
+      # - 768 # [s4]
+      # - 512 # [llama2, retnet, lightconv]
+      # - 800 # mamba
+      # - 640 # [rwkv, dynamicconv]
+      # - 576 # [hyena, gpt2]
+      # - 768 # [lightconv]
+      # - 1024 # [h3, gru]
+      # - 896 # [lstm]
+      - 1792 # [rnn]
+  model.max_seq_len:
+    value: 512
+  model.n_layer:
+    values:
+      # - 8 # [mamba, llama2, retnet, gpt2, lightconv]
+      # - 6 # [s4]
+      # - 7 # [dynamicconv, h3]
+      - 5 # [gru, lightconv, lstm, rnn]
+  optimizer:
+    value: adamw
+  optimizer.lr:
+    values:
+      - 0.000316228
+  optimizer.weight_decay:
+    value: 0
+  save_checkpoints:
+    value: true
+  train.save_every:
+    value: 50_000
+  scheduler.decay_lr:
+    value: true
+  seed:
+    values:
+      - 2059
+  train.batch_size:
+    value: 50
+  train.do_early_stop:
+    value: false
+  train.iters:
+    value: 200001
+  train.log_every:
+    value: 1000
+  train.num_workers:
+    value: 0
+  train.parallel_loss:
+    value: true
+program: main.py
+project: lm-tinystories-reprod

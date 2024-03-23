@@ -1,0 +1,11 @@
+# @package _global_
+model:
+  _name_: rnn
+  d_model: 128
+  n_layer: 30
+  activ_fn: tanh
+  bias: false
+  batch_first: true
+  dropout: 0.0
+  bidirectional: false
+  max_seq_len: null

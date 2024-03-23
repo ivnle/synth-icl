@@ -1,0 +1,82 @@
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args_no_hyphens}
+entity: iceberg
+method: grid
+parameters:
+  data:
+    value: linear-regression
+  data.curriculum.dims.end:
+    values:
+      - 20
+  data.curriculum.points_train.end:
+    value: 32
+  data.curriculum.points_train.start:
+    value: 32
+  data.curriculum.points_val.end:
+    value: 1024
+  data.curriculum.points_val.start:
+    value: 1024
+  data.train_noise:
+    values: [0]
+  data.val_noise:
+    values: [0.1, 0.5, 1]
+  eval.every:
+    value: 5000
+  eval.iters:
+    value: 1000
+  model:
+    values:
+      - rnn
+      - lstm
+      - gru
+      - lightconv
+      - dynamicconv
+      - s4
+      - h3
+      - hyena
+      - mamba
+      - retnet
+      - rwkv
+      - gpt2
+      - llama2
+  model.d_model:
+    values:
+      - 64
+  model.max_seq_len:
+    value: 4096
+  model.n_layer:
+    values:
+      - 12
+      - 8
+      - 4
+  optimizer:
+    value: adamw
+  optimizer.lr:
+    values:
+      - 0.001
+      - 0.000316228
+      - 0.0001
+  optimizer.weight_decay:
+    value: 0
+  scheduler.decay_lr:
+    value: true
+  seed:
+    values:
+      - 2059
+      - 5947
+      - 9656
+  train.batch_size:
+    value: 128
+  train.do_early_stop:
+    value: false
+  train.iters:
+    value: 100001
+  train.log_every:
+    value: 1000
+  train.parallel_loss:
+    value: true
+program: main.py
+project: lr-extrapolate-noisy2

@@ -1,0 +1,20 @@
+# @package _global_
+data:
+  _name_: language-modeling-HF
+  vocab_size: 10000
+  preprocessing_num_workers: 40
+  overwrite_cache: false
+  tokenizer_dir: EleutherAI/gpt-neo-125M
+  # tokenizer_dir: meta-llama/Llama-2-7b-hf
+  # tokenizer_dir: task/language_modeling/ts-tokenizer
+  max_seq_len: ${model.max_seq_len}
+  do_shuffle: true
+  version: original # `original` or `gpt4_only` or `union`.
+  sent:
+    filepath: stats/sent.csv
+    examples_per_class: 3
+    same_name: Lilly
+    do_flip_class: false
+
+
+

@@ -1,0 +1,8 @@
+# @package _global_
+model:
+  _name_: lstm
+  d_model: 128
+  n_layer: 8
+  bias: true
+  dropout: 0.0
+  max_seq_len: 32

@@ -1,0 +1,11 @@
+# @package _global_
+model:
+  _name_: t5
+  d_model: 128
+  d_inner: ${eval:'${model.d_model} * 4'}
+  n_layer: 4
+  n_heads: ${eval:'${model.d_model} / 32'}
+  max_seq_len: 256
+  n_layer_decoder: ${model.n_layer}
+  dropout: 0
+  pass_embed: true

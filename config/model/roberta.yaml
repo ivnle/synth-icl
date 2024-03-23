@@ -1,0 +1,9 @@
+# @package _global_
+model:
+  _name_: roberta
+  d_model: 128
+  d_inner: ${eval:'${model.d_model} * 4'}
+  n_layer: 6
+  n_heads: ${eval:'${model.d_model} / 32'}
+  max_seq_len: 256
+  dropout: 0.0

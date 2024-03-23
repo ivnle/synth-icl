@@ -1,0 +1,13 @@
+# @package _global_
+wandb:
+  project: omniglot
+train:
+  batch_size: 32
+  max_iters: 500001
+eval:
+  every: 1000
+model:
+  d_model: 64
+  n_layer: 6
+scheduler:
+  warmup_iters: 4000

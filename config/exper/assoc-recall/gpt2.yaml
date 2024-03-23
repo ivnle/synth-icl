@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/assoc-recall.yaml
+  - /model/gpt2.yaml
+  - /exper/assoc-recall/base.yaml

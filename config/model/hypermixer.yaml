@@ -1,0 +1,8 @@
+# @package _global_
+model:
+  _name_: hypermixer
+  d_model: 128
+  d_inner: ${eval:'${model.d_model} * 4'}
+  n_layer: 6
+  max_seq_len: 256 # set this to max length of data if using causal
+  token_mixer: hypermixer_causal # hypermixer_causal, hypermixer, mlpmixer, mlpmixer_causal

@@ -1,0 +1,39 @@
+# @package _global_
+wandb:
+  project: linear-regression
+train:
+  log_every: 1000
+  batch_size: 64
+  iters: 100001
+  task: linear_regression
+  task_kwargs: {}
+  curriculum:
+    dims:
+      start: 5
+      end: 5
+      inc: 1
+      interval: 2000
+    points:
+      start: ${eval:'${train.curriculum.dims.start} + 1'}
+      end: ${eval:'${train.curriculum.dims.end} * 2 + 1'}
+      inc: 2
+      interval: 2000
+  data: gaussian
+  num_workers: 0 # must set to 0 for curriculum to work
+  dtype: float32
+  do_amp: False
+eval:
+  batch_size: 1 # can't we just increase this for faster evaluation?
+  iters: 500
+  split: eval
+model:
+  # d_model: 256
+  # n_layer: 12
+  # n_heads: 8
+  n_dims: ${train.curriculum.dims.end}
+  n_positions: 101 # what does this do?
+scheduler:
+  decay_lr: true
+  # warmup_iters: 4000
+optimizer:
+  lr: 1.0e-4

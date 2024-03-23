@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/tiny_stories.yaml
+  - /model/dynamicconv.yaml
+  - /exper/tiny_stories/base.yaml

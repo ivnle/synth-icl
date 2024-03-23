@@ -1,0 +1,21 @@
+# @package _global_
+wandb:
+  project: tiny-stories
+train:
+  batch_size: 8
+  max_iters: 100001
+  dtype: float32
+eval:
+  every: 1000
+  batch_size: 1
+model:
+  d_model: 64
+  n_layer: 6
+  n_heads: 8
+  max_seq_len: 1024 # controls the seq len of each example
+gen:
+  gen_every: 1000
+  temperature: 1.0
+  top_k: null
+  max_new_tokens: 50
+  prompt_len: 50

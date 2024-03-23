@@ -1,0 +1,17 @@
+# @package _global_
+model:
+  _name_: gpt2-x
+  d_model: 288
+  dim: ${model.d_model} # temporary hack to make llama happy
+  d_inner: ${eval:'${model.d_model} * 4'}
+  n_layer: 4
+  n_heads: ${eval:'${model.d_model} / 32'}
+  n_kv_heads: ${model.n_heads}
+  multiple_of: 32 # make SwiGLU hidden layer size multiple of large power of 2
+  max_seq_len: 256
+  dropout: 0.0
+  norm_eps: 1.0e-5
+  rotary_xpos: false
+  use_rmsnorm: false
+  ff_swish: false
+  x_decoder_only: true

@@ -1,0 +1,5 @@
+# @package _global_
+defaults:
+  - /data/assoc-recall.yaml
+  - /model/gru.yaml
+  - /exper/assoc-recall/base.yaml
